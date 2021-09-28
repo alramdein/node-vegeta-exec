@@ -5,10 +5,16 @@ const fs = require("fs");
 const endpoints = fs.readFileSync(process.env.FILE_NAME).toString().split("\n");
 let i = 0;
 
+const sleep = (ms) => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+};
+
 const execVegetaCommand = (enpoints, index = 0) => {
   exec(
     `echo "GET ${process.env.HOST}${enpoints[index]}" | vegeta attack -header "authorization: Bearer ${process.env.TOKEN}" -duration=${process.env.DURATION} -rate=${process.env.RATE} | vegeta report --type=text`,
-    (error, stdout, stderr) => {
+    async (error, stdout, stderr) => {
       console.log(`Endpoint-${i}`);
       console.log(`URL: ${process.env.HOST}${endpoints[index]}`);
       if (error) {
@@ -23,6 +29,7 @@ const execVegetaCommand = (enpoints, index = 0) => {
 
       i += 1;
       if (i > endpoints.length) return;
+      await sleep(5000);
       execVegetaCommand(endpoints, i);
     }
   );
