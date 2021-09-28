@@ -1,0 +1,15 @@
+{
+  "name": "shell-exec",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alif Ramdani",
+  "license": "ISC",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "dotenv": "^10.0.0"
+  }
+}
