@@ -1,4 +1,4 @@
-Node.js program to run vegeta shell script command
+Node.js program to run vegeta shell script command. More about [node-vegeta](https://github.com/jbarabander/node-vegeta)
 
 ## Requirements
 
